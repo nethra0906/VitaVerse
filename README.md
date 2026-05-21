@@ -27,7 +27,7 @@ The system enables healthcare professionals to proactively evaluate outcomes and
 
 ---
 
-## 🎯 Problem Statement
+## Problem Statement
 
 Healthcare providers often struggle to answer questions such as:
 
