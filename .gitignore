@@ -20,9 +20,6 @@ models/*.pt
 models/*.pth
 models/shap_plot.png
 
-data/processed/*
-data/simulated/*
-
 !data/processed/.gitkeep
 !data/simulated/.gitkeep
 
