@@ -6,10 +6,6 @@ import pandas as pd
 
 API = "http://localhost:8000/api/v1"
 
-# --------------------------------------------------
-# PAGE CONFIG
-# --------------------------------------------------
-
 st.set_page_config(
     page_title="VitaVerse",
     page_icon="🧬",
@@ -17,9 +13,6 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# --------------------------------------------------
-# CUSTOM CSS
-# --------------------------------------------------
 
 st.markdown("""
 <style>
@@ -29,14 +22,11 @@ st.markdown("""
     color:white;
 }
 
-/* Remove default top padding */
+
 .block-container{
     padding-top:2rem;
 }
 
-/* ------------------------------
-   FULL WIDTH MODERN TABS
---------------------------------*/
 
 .stTabs [data-baseweb="tab-list"]{
     width:100%;
@@ -79,12 +69,11 @@ st.markdown("""
     0 0 15px rgba(37,99,235,.4);
 }
 
-/* Hide ugly separator */
+
 .stTabs [data-baseweb="tab-border"]{
     display:none;
 }
 
-/* KPI Cards */
 
 [data-testid="metric-container"]{
     background:#111827;
@@ -93,19 +82,15 @@ st.markdown("""
     border-radius:18px;
 }
 
-/* Sidebar */
 
 section[data-testid="stSidebar"]{
     background:#111827;
 }
 
-/* Charts */
 
 .js-plotly-plot{
     border-radius:18px;
 }
-
-/* Buttons */
 
 .stButton > button{
     width:100%;
@@ -124,8 +109,6 @@ section[data-testid="stSidebar"]{
 .stButton > button:hover{
     transform:translateY(-2px);
 }
-
-/* Cards */
 
 .success-card{
     background:#052E16;
@@ -151,9 +134,6 @@ section[data-testid="stSidebar"]{
 </style>
 """, unsafe_allow_html=True)
 
-# --------------------------------------------------
-# HEADER
-# --------------------------------------------------
 
 st.markdown("""
 <div style='padding:25px;
@@ -172,9 +152,6 @@ Predict • Forecast • Simulate • Explain
 
 st.markdown("")
 
-# --------------------------------------------------
-# SIDEBAR
-# --------------------------------------------------
 
 st.sidebar.title("Patient Digital Twin")
 
@@ -281,9 +258,6 @@ patient = {
     "MedAdherence": med_adh
 }
 
-# --------------------------------------------------
-# TOP DASHBOARD KPIs
-# --------------------------------------------------
 
 col1,col2,col3,col4,col5 = st.columns(5)
 
@@ -295,9 +269,6 @@ col5.metric("Sleep", sleep)
 
 st.divider()
 
-# --------------------------------------------------
-# TABS
-# --------------------------------------------------
 
 tab1,tab2,tab3,tab4 = st.tabs([
     "Risk Analysis",
@@ -306,9 +277,6 @@ tab1,tab2,tab3,tab4 = st.tabs([
     "Explainability"
 ])
 
-# ==================================================
-# TAB 1
-# ==================================================
 
 with tab1:
 
@@ -399,9 +367,6 @@ with tab1:
 
                 st.error(e)
 
-# ==================================================
-# TAB 2
-# ==================================================
 
 with tab2:
 
@@ -457,9 +422,7 @@ with tab2:
         except Exception as e:
             st.error(e)
 
-# ==================================================
-# TAB 3
-# ==================================================
+
 
 with tab3:
 
@@ -552,10 +515,6 @@ with tab3:
 
         except Exception as e:
             st.error(e)
-
-# ==================================================
-# TAB 4
-# ==================================================
 
 with tab4:
 

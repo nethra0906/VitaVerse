@@ -4,7 +4,7 @@ from typing import Optional, Dict
 
 class PatientInput(BaseModel):
     Age:              float = Field(..., example=45)
-    Gender:           int   = Field(..., example=1)       # 0=F, 1=M
+    Gender:           int   = Field(..., example=1)    
     BMI:              float = Field(..., example=31.0)
     Glucose:          float = Field(..., example=155.0)
     BloodPressure:    float = Field(..., example=130.0)
