@@ -17,118 +17,235 @@ st.set_page_config(
 st.markdown("""
 <style>
 
+:root{
+    --bg:#07111F;
+    --panel:#0F172A;
+    --panel-2:#111C32;
+    --border:rgba(255,255,255,0.08);
+    --text:#F8FAFC;
+    --muted:#94A3B8;
+
+    --primary:#4F6FAE;
+    --primary-dark:#425D92;
+    --primary-light:#5C7BC0;
+}
+
 .stApp{
-    background-color:#0B1120;
+    background:var(--bg);
+    color:var(--text);
+}
+
+.block-container{
+    padding-top:1.5rem;
+    max-width:1400px;
+}
+
+section[data-testid="stSidebar"]{
+    background:var(--panel);
+    border-right:1px solid var(--border);
+}
+
+section[data-testid="stSidebar"] *{
     color:white;
 }
 
+/* HERO */
 
-.block-container{
-    padding-top:2rem;
+.hero-card{
+    padding:42px;
+    border-radius:22px;
+
+    background:linear-gradient(
+        135deg,
+        #4F6FAE,
+        #4A78A8
+    );
+
+    border:1px solid rgba(255,255,255,0.08);
+
+   margin-bottom:35px;
 }
 
+.hero-title{
+    font-size:56px;
+    font-weight:700;
+    color:white;
+    text-align:center;
+    margin-bottom:10px;
+}
+
+.hero-sub{
+    text-align:center;
+    font-size:20px;
+    color:rgba(255,255,255,0.85);
+}
+
+/* METRICS */
+
+[data-testid="metric-container"]{
+
+    background:var(--panel);
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    padding:20px;
+
+    box-shadow:none;
+}
+
+[data-testid="metric-container"] label{
+    color:var(--muted);
+}
+
+[data-testid="metric-container"] [data-testid="stMetricValue"]{
+    color:white;
+}
+
+/* TABS */
 
 .stTabs [data-baseweb="tab-list"]{
-    width:100%;
-    display:flex;
-    gap:12px;
-    background:#111827;
+
+    background:var(--panel);
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
     padding:8px;
-    border-radius:16px;
-    margin-bottom:20px;
+
+    gap:10px;
 }
 
 .stTabs [data-baseweb="tab"]{
-    flex:1;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    height:65px;
-    border-radius:12px;
-    font-size:18px;
-    font-weight:600;
-    color:#94A3B8;
-    transition:all .3s ease;
+
+    border-radius:14px;
+
+    height:58px;
+
+    color:var(--muted);
+
+    font-weight:500;
+
+    transition:0.2s;
 }
 
 .stTabs [data-baseweb="tab"]:hover{
-    background:#1E293B;
+
+    background:#182338;
+
     color:white;
 }
 
 .stTabs [aria-selected="true"]{
-    background:linear-gradient(
-        135deg,
-        #2563EB,
-        #06B6D4
-    ) !important;
+
+    background:var(--primary) !important;
 
     color:white !important;
 
-    box-shadow:
-    0 0 15px rgba(37,99,235,.4);
+    box-shadow:none !important;
 }
-
 
 .stTabs [data-baseweb="tab-border"]{
     display:none;
 }
 
-
-[data-testid="metric-container"]{
-    background:#111827;
-    border:1px solid rgba(255,255,255,0.05);
-    padding:18px;
-    border-radius:18px;
-}
-
-
-section[data-testid="stSidebar"]{
-    background:#111827;
-}
-
-
-.js-plotly-plot{
-    border-radius:18px;
-}
+/* BUTTONS */
 
 .stButton > button{
+
     width:100%;
-    height:55px;
+
+    height:54px;
+
     border:none;
-    border-radius:12px;
-    background:linear-gradient(
-        135deg,
-        #2563EB,
-        #06B6D4
-    );
+
+    border-radius:14px;
+
+    background:#4F6FAE;
+
     color:white;
-    font-weight:700;
+
+    font-weight:600;
+
+    transition:0.2s ease;
 }
 
 .stButton > button:hover{
-    transform:translateY(-2px);
+
+    background:#5C7BC0;
+
+    transform:none;
 }
 
+/* CHARTS */
+
+.js-plotly-plot{
+
+    background:var(--panel);
+
+    border-radius:18px;
+}
+
+/* ALERT CARDS */
+
 .success-card{
-    background:#052E16;
-    border-left:6px solid #22C55E;
-    padding:20px;
-    border-radius:12px;
+
+    background:#12261A;
+
+    border:1px solid rgba(34,197,94,.2);
+
+    padding:18px;
+
+    border-radius:14px;
 }
 
 .warning-card{
-    background:#451A03;
-    border-left:6px solid #F59E0B;
-    padding:20px;
-    border-radius:12px;
+
+    background:#2B2113;
+
+    border:1px solid rgba(245,158,11,.2);
+
+    padding:18px;
+
+    border-radius:14px;
 }
 
 .danger-card{
-    background:#450A0A;
-    border-left:6px solid #EF4444;
-    padding:20px;
-    border-radius:12px;
+
+    background:#2A1717;
+
+    border:1px solid rgba(239,68,68,.2);
+
+    padding:18px;
+
+    border-radius:14px;
+}
+
+hr{
+    border-color:var(--border);
+}
+            
+.stTabs [data-baseweb="tab-list"]{
+    width:100%;
+    display:grid !important;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+
+    background:#0F172A;
+    border:1px solid rgba(255,255,255,0.08);
+
+    padding:10px;
+    border-radius:18px;
+}
+
+.stTabs [data-baseweb="tab"]{
+    width:100% !important;
+    justify-content:center !important;
+    text-align:center !important;
+    border-radius:14px;
+    height:58px;
 }
 
 </style>
@@ -136,21 +253,18 @@ section[data-testid="stSidebar"]{
 
 
 st.markdown("""
-<div style='padding:25px;
-background:linear-gradient(135deg,#2563EB,#06B6D4);
-border-radius:20px;
-text-align:center;'>
+<div class='hero-card'>
 
-<h1 style='color:white;'>VitaVerse Healthcare Digital Twin</h1>
+<div class='hero-title'>
+VitaVerse Healthcare Digital Twin
+</div>
 
-<p style='color:white;font-size:18px'>
+<div class='hero-sub'>
 Predict • Forecast • Simulate • Explain
-</p>
+</div>
 
 </div>
 """, unsafe_allow_html=True)
-
-st.markdown("")
 
 
 st.sidebar.title("Patient Digital Twin")
@@ -261,11 +375,11 @@ patient = {
 
 col1,col2,col3,col4,col5 = st.columns(5)
 
-col1.metric("BMI", bmi)
-col2.metric("HbA1c", hba1c)
-col3.metric("Glucose", glucose)
-col4.metric("Blood Pressure", bp)
-col5.metric("Sleep", sleep)
+col1.metric("BMI", f"{bmi:.1f}")
+col2.metric("HbA1c", f"{hba1c:.1f}%")
+col3.metric("Glucose", f"{glucose} mg/dL")
+col4.metric("Blood Pressure", f"{bp} mmHg")
+col5.metric("Sleep", f"{sleep:.1f} hrs")
 
 st.divider()
 
